@@ -16,4 +16,4 @@ before_install:
 
 # Run test
 script:
-- docker run -e CI=true hasratsabit/react-test npm run test -- --coverage --watchAll=false
+- docker run -e CI=true hasratsabit/react-test npm run test
