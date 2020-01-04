@@ -11,3 +11,8 @@ before_install:
 - gcloud confit set project multi-k8s-264114
 - gcloud config set compute/zone us-east1-d
 - gcloud container clusters get-credentials multi-cluster
+- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+- docker build -t hasratsabit/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+- docker run -e CI=true hasratsabit/react-test npm run test -- --coverage --watchAll=false
